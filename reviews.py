@@ -10,9 +10,9 @@ list_app = {
     'happyfresh': 'com.happyfresh.android'
 }
 
-for app in list_app:
+def scrap_reviews(app_id, app_name):
     result, continuation_token = reviews(
-        list_app[app],
+        app_id,
         lang='id', # defaults to 'en'
         country='id', # defaults to 'us'
         sort=Sort.NEWEST, # defaults to Sort.NEWEST
@@ -20,8 +20,18 @@ for app in list_app:
         filter_score_with=None # defaults to None(means all score)
     )
     result, _ = reviews(
-        list_app[app],
+        app_id,
         continuation_token=continuation_token # defaults to None(load from the beginning)
     )
+    return app_name, result
 
-    utils.save_data(result, f"data/{app}.json")
+def main():
+    for app_name, app_id in list_app.items():
+        print(f'scraping {app_name}...')
+        app_name, result = scrap_reviews(app_id, app_name)
+        utils.save_data(result, f'data/{app_name}.json')
+        print(f'{app_name} done...')
+
+
+if __name__ == '__main__':
+    main()
