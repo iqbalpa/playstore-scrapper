@@ -1,7 +1,6 @@
 from google_play_scraper import Sort, reviews
 import utils
 
-list_app = ['segari', 'astro', 'sayurbox', 'titipku', 'my super indo', 'hypermart', 'happyfresh']
 list_app = {
     'segari': 'id.segari.customer', 
     'astro': 'com.astro.shop',
@@ -29,7 +28,8 @@ def main():
     for app_name, app_id in list_app.items():
         print(f'scraping {app_name}...')
         app_name, result = scrap_reviews(app_id, app_name)
-        utils.save_data(result, f'data/{app_name}.json')
+        # utils.save_data(result, f'data/{app_name}.json')
+        utils.save_txt(str(result), f'data/{app_name}.txt')
         print(f'{app_name} done...')
 
 
