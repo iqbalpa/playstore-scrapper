@@ -2,8 +2,8 @@ from google_play_scraper import Sort, reviews
 import utils
 
 list_app = {
-    'segari': 'id.segari.customer', 
-    'astro': 'com.astro.shop',
+    # 'segari': 'id.segari.customer', 
+    # 'astro': 'com.astro.shop',
     'sayurbox': 'com.sayurbox',
     'hypermart': 'com.hypermart.mobile',
     # 'happyfresh': 'com.happyfresh.android'
